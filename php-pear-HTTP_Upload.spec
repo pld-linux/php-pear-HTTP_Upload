@@ -5,8 +5,8 @@
 Summary:	%{_class}_%{_subclass} - Easy and secure managment of files submitted via HTML Forms
 Summary(pl):	%{_class}_%{_subclass} - Proste i ³atwe zarz±dzanie plikami przesy³anymi przez formularze HTML
 Name:		php-pear-%{_pearname}
-Version:	0.8
-Release:	2
+Version:	0.8.1
+Release:	1
 License:	PHP 2.02
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
