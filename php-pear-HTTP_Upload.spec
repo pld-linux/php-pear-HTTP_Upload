@@ -2,8 +2,8 @@
 %define		_class		HTTP
 %define		_subclass	Upload
 %define		_pearname	%{_class}_%{_subclass}
-Summary:	%{_class}_%{_subclass} - Easy and secure managment of files submitted via HTML Forms
-Summary(pl):	%{_class}_%{_subclass} - Proste i ³atwe zarz±dzanie plikami przesy³anymi przez formularze HTML
+Summary:	%{_pearname} - Easy and secure managment of files submitted via HTML Forms
+Summary(pl):	%{_pearname} - Proste i ³atwe zarz±dzanie plikami przesy³anymi przez formularze HTML
 Name:		php-pear-%{_pearname}
 Version:	0.8.1
 Release:	1
