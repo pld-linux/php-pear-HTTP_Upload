@@ -1,6 +1,7 @@
 %include	/usr/lib/rpm/macros.php
 %define		_class		HTTP
 %define		_subclass	Upload
+%define		_status		stable
 %define		_pearname	%{_class}_%{_subclass}
 Summary:	%{_pearname} - Easy and secure managment of files submitted via HTML Forms
 Summary(pl):	%{_pearname} - Proste i ³atwe zarz±dzanie plikami przesy³anymi przez formularze HTML
@@ -27,6 +28,8 @@ made from html forms. Features:
 - Validate allowed file extensions.
 - Multiple languages error messages support.
 
+This class has in PEAR status: %{_status}.
+
 %description -l pl
 Ta klasa dostarcza system zaawansowanego uploadu plików z formularzy
 html. W³a¶ciwo¶ci:
@@ -39,6 +42,8 @@ html. W³a¶ciwo¶ci:
   unikalnie.
 - Sprawdzanie dozwolonych rozszerzeñ plików.
 - Wsparcie dla wielojêzycznych komunikatów b³êdów.
+
+Ta klasa ma w PEAR status: %{_status}.
 
 %prep
 %setup -q -c
