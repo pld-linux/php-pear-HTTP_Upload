@@ -3,15 +3,16 @@
 %define		_subclass	Upload
 %define		_status		stable
 %define		_pearname	%{_class}_%{_subclass}
+
 Summary:	%{_pearname} - Easy and secure managment of files submitted via HTML Forms
 Summary(pl):	%{_pearname} - Proste i ³atwe zarz±dzanie plikami przesy³anymi przez formularze HTML
 Name:		php-pear-%{_pearname}
-Version:	0.8.1
-Release:	2
+Version:	0.9.1
+Release:	1
 License:	PHP 2.02
 Group:		Development/Languages/PHP
-# Source0-md5:	142a87c46988276247a425cf41e6302b
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
+# Source0-md5:	fd1161202786fcba5272d2715bcda787
 URL:		http://pear.php.net/package/HTTP_Upload/
 BuildRequires:	rpm-php-pearprov >= 4.0.2-98
 Requires:	php-pear
