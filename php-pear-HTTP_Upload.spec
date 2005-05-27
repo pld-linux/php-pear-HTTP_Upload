@@ -8,20 +8,24 @@ Summary:	%{_pearname} - Easy and secure managment of files submitted via HTML Fo
 Summary(pl):	%{_pearname} - Proste i ³atwe zarz±dzanie plikami przesy³anymi przez formularze HTML
 Name:		php-pear-%{_pearname}
 Version:	0.9.1
-Release:	2
+Release:	2.1
 License:	PHP 2.02
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
+Patch0:		%{name}-bug-4441.patch
 # Source0-md5:	fd1161202786fcba5272d2715bcda787
 URL:		http://pear.php.net/package/HTTP_Upload/
 BuildRequires:	rpm-php-pearprov >= 4.0.2-98
+BuildRequires:	sed >= 4.0
 Requires:	php-pear
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 This class provides an advanced file uploader system for file uploads
-made from html forms. Features:
+made from html forms.
+
+Features:
 - Can handle from one file to multiple files.
 - Safe file copying from tmp dir.
 - Easy detecting mechanism of valid upload, missing upload or error.
@@ -34,7 +38,9 @@ In PEAR status of this package is: %{_status}.
 
 %description -l pl
 Ta klasa dostarcza system zaawansowanego uploadu plików z formularzy
-html. W³a¶ciwo¶ci:
+html.
+
+W³a¶ciwo¶ci:
 - Potrafi pobraæ jeden i wiele plików.
 - Bezpieczne kopiowanie z katalogu tmp.
 - Prosty mechanizm wykrywania prawid³owego uploadu, braku uploadu oraz
@@ -49,6 +55,12 @@ Ta klasa ma w PEAR status: %{_status}.
 
 %prep
 %setup -q -c
+cd %{_pearname}-%{version}
+# undos the source
+sed -i -e 's,
+$,,' *.php docs/*.php
+
+%patch0 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
