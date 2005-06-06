@@ -43,3 +43,35 @@
 -?>
 \ No newline at end of file
 +?>
+--- ./Upload.php~	2005-06-06 16:52:38.000000000 +0300
++++ ./Upload.php	2005-06-06 17:02:12.000000000 +0300
+@@ -549,6 +549,13 @@
+     var $_extensions_mode  = 'deny';
+ 
+     /**
++     * @see HTTP_Upload_File::setValidExtensions()
++     * @var bool
++     * @access private
++     */
++	var $_extensions_case_sensitive = true;
++
++    /**
+      * Contains the desired chmod for uploaded files
+      * @var int
+      * @access private
+@@ -839,11 +846,13 @@
+      * @param bool $case_sensitive Is extension check is case sensitive.
+      * @access public
+      */
+-    function setValidExtensions($exts, $mode = 'deny', $case_sensitive = true)
++    function setValidExtensions($exts, $mode = 'deny', $case_sensitive = null)
+     {
+         $this->_extensions_check = $exts;
+         $this->_extensions_mode  = $mode;
+-        $this->_extensions_case_sensitive  = $case_sensitive;
++		if (!is_null($case_sensitive)) {
++			$this->_extensions_case_sensitive  = $case_sensitive;
++		}
+     }
+ 
+     /**
