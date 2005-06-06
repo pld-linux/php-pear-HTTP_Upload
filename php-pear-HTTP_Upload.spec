@@ -12,10 +12,10 @@ Release:	2.3
 License:	PHP 2.02
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
+# Source0-md5:	fd1161202786fcba5272d2715bcda787
 Patch0:		%{name}-bug-4441.patch
 Patch1:		http://glen.alkohol.ee/pld/%{name}-et.patch
 Patch2:		%{name}-bug-4318.patch
-# Source0-md5:	fd1161202786fcba5272d2715bcda787
 URL:		http://pear.php.net/package/HTTP_Upload/
 BuildRequires:	rpm-php-pearprov >= 4.0.2-98
 BuildRequires:	sed >= 4.0
