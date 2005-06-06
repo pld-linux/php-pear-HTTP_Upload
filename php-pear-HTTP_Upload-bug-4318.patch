@@ -1,0 +1,45 @@
+--- ./Upload.php~	2005-06-06 16:52:38.000000000 +0300
++++ ./Upload.php	2005-06-06 17:02:12.000000000 +0300
+@@ -836,12 +836,14 @@
+      *                       1) 'deny'   Will deny only the supplied extensions
+      *                       2) 'accept' Will accept only the supplied extensions
+      *                                   as valid
++     * @param bool $case_sensitive Is extension check is case sensitive.
+      * @access public
+      */
+-    function setValidExtensions($exts, $mode = 'deny')
++    function setValidExtensions($exts, $mode = 'deny', $case_sensitive = true)
+     {
+         $this->_extensions_check = $exts;
+         $this->_extensions_mode  = $mode;
++        $this->_extensions_case_sensitive  = $case_sensitive;
+     }
+ 
+     /**
+@@ -854,17 +856,22 @@
+     {
+         $exts = $this->_extensions_check;
+         settype($exts, 'array');
++        $ext = $this->getProp('ext');
++        if (!$this->_extensions_case_sensitive) {
++            $ext = strtolower($ext);
++        }
++
+         if ($this->_extensions_mode == 'deny') {
+-            if (in_array($this->getProp('ext'), $exts)) {
++            if (in_array($ext, $exts)) {
+                 return false;
+             }
+         // mode == 'accept'
+         } else {
+-            if (!in_array($this->getProp('ext'), $exts)) {
++            if (!in_array($ext, $exts)) {
+                 return false;
+             }
+         }
+         return true;
+     }
+ }
+-?>
+\ No newline at end of file
++?>
