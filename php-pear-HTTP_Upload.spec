@@ -8,7 +8,7 @@ Summary:	%{_pearname} - Easy and secure managment of files submitted via HTML Fo
 Summary(pl):	%{_pearname} - Proste i ³atwe zarz±dzanie plikami przesy³anymi przez formularze HTML
 Name:		php-pear-%{_pearname}
 Version:	0.9.1
-Release:	2.4
+Release:	2.5
 License:	PHP 2.02
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
@@ -17,8 +17,7 @@ Patch0:		%{name}-bug-4441.patch
 Patch1:		http://glen.alkohol.ee/pld/%{name}-et.patch
 Patch2:		%{name}-bug-4318.patch
 URL:		http://pear.php.net/package/HTTP_Upload/
-BuildRequires:	rpm-php-pearprov >= 4.0.2-98
-BuildRequires:	sed >= 4.0
+BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 Requires:	php-pear
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -56,26 +55,23 @@ W³a¶ciwo¶ci:
 Ta klasa ma w PEAR status: %{_status}.
 
 %prep
-%setup -q -c
-cd %{_pearname}-%{version}
-# undos the source
-sed -i -e 's,
-$,,' *.php docs/*.php
-
+%pear_package_setup
+cd ./%{php_pear_dir}/%{_class}
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{php_pear_dir}/%{_class}
-
-install %{_pearname}-%{version}/*.php $RPM_BUILD_ROOT%{php_pear_dir}/%{_class}/
+install -d $RPM_BUILD_ROOT%{php_pear_dir}
+%pear_package_install
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc %{_pearname}-%{version}/docs/*
+%doc install.log
+%doc docs/%{_pearname}/docs/*
+%{php_pear_dir}/.registry/*.reg
 %{php_pear_dir}/%{_class}/*.php
