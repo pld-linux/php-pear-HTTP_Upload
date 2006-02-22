@@ -1,6 +1,20 @@
---- ./Upload.php~	2005-06-06 16:52:38.000000000 +0300
-+++ ./Upload.php	2005-06-06 17:02:12.000000000 +0300
-@@ -836,12 +836,14 @@
+--- ./Upload.php~	2006-02-22 13:55:52.000000000 +0200
++++ ./Upload.php	2006-02-22 13:55:56.000000000 +0200
+@@ -590,6 +590,13 @@
+     var $_extensionsMode  = 'deny';
+ 
+     /**
++     * @see HTTP_Upload_File::setValidExtensions()
++     * @var bool
++     * @access private
++     */
++	var $_extensionsCaseSensitive = true;
++
++    /**
+      * Contains the desired chmod for uploaded files
+      * @var int
+      * @access private
+@@ -934,12 +941,16 @@
       *                       1) 'deny'   Will deny only the supplied extensions
       *                       2) 'accept' Will accept only the supplied extensions
       *                                   as valid
@@ -8,70 +22,27 @@
       * @access public
       */
 -    function setValidExtensions($exts, $mode = 'deny')
-+    function setValidExtensions($exts, $mode = 'deny', $case_sensitive = true)
++    function setValidExtensions($exts, $mode = 'deny', $case_sensitive = null)
      {
-         $this->_extensions_check = $exts;
-         $this->_extensions_mode  = $mode;
-+        $this->_extensions_case_sensitive  = $case_sensitive;
+         $this->_extensionsCheck = $exts;
+         $this->_extensionsMode  = $mode;
++		if (!is_null($case_sensitive)) {
++			$this->_extensionsCaseSensitive  = $case_sensitive;
++		}
      }
  
      /**
-@@ -854,17 +856,22 @@
+@@ -952,8 +963,12 @@
      {
-         $exts = $this->_extensions_check;
+         $exts = $this->_extensionsCheck;
          settype($exts, 'array');
 +        $ext = $this->getProp('ext');
-+        if (!$this->_extensions_case_sensitive) {
++        if (!$this->_extensionsCaseSensitive) {
 +            $ext = strtolower($ext);
 +        }
-+
-         if ($this->_extensions_mode == 'deny') {
+         if ($this->_extensionsMode == 'deny') {
 -            if (in_array($this->getProp('ext'), $exts)) {
 +            if (in_array($ext, $exts)) {
                  return false;
              }
          // mode == 'accept'
-         } else {
--            if (!in_array($this->getProp('ext'), $exts)) {
-+            if (!in_array($ext, $exts)) {
-                 return false;
-             }
-         }
-         return true;
-     }
- }
--?>
-\ No newline at end of file
-+?>
---- ./Upload.php~	2005-06-06 16:52:38.000000000 +0300
-+++ ./Upload.php	2005-06-06 17:02:12.000000000 +0300
-@@ -549,6 +549,13 @@
-     var $_extensions_mode  = 'deny';
- 
-     /**
-+     * @see HTTP_Upload_File::setValidExtensions()
-+     * @var bool
-+     * @access private
-+     */
-+	var $_extensions_case_sensitive = true;
-+
-+    /**
-      * Contains the desired chmod for uploaded files
-      * @var int
-      * @access private
-@@ -839,11 +846,13 @@
-      * @param bool $case_sensitive Is extension check is case sensitive.
-      * @access public
-      */
--    function setValidExtensions($exts, $mode = 'deny', $case_sensitive = true)
-+    function setValidExtensions($exts, $mode = 'deny', $case_sensitive = null)
-     {
-         $this->_extensions_check = $exts;
-         $this->_extensions_mode  = $mode;
--        $this->_extensions_case_sensitive  = $case_sensitive;
-+		if (!is_null($case_sensitive)) {
-+			$this->_extensions_case_sensitive  = $case_sensitive;
-+		}
-     }
- 
-     /**
