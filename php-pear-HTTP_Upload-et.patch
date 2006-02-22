@@ -36,7 +36,7 @@
              'NO_USER_FILE' => array(
                  'es'    => 'No se ha escogido fichero para el upload.',
                  'en'    => 'You haven\'t selected any file for uploading.',
-+                'et'    => '&Uuml;leslaetav fail j&auml;i valimatta.',
++                'et'    => '&Uuml;leslaetav fail j&auml;i valimata.',
                  'de'    => 'Es wurde keine Datei f&uuml;r den Upload ausgew&auml;hlt.',
                  'nl'    => 'Er is geen bestand opgegeven om te uploaden.',
                  'fr'    => 'Vous n\'avez pas s&eacute;lectionn&eacute; de fichier &agrave; envoyer.',
