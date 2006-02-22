@@ -1,5 +1,5 @@
---- ./Upload.php~	2006-02-22 13:55:52.000000000 +0200
-+++ ./Upload.php	2006-02-22 13:55:56.000000000 +0200
+--- ./Upload.php~    2006-02-22 13:55:52.000000000 +0200
++++ ./Upload.php    2006-02-22 13:55:56.000000000 +0200
 @@ -590,6 +590,13 @@
      var $_extensionsMode  = 'deny';
  
@@ -8,7 +8,7 @@
 +     * @var bool
 +     * @access private
 +     */
-+	var $_extensionsCaseSensitive = true;
++     var $_extensionsCaseSensitive = true;
 +
 +    /**
       * Contains the desired chmod for uploaded files
@@ -26,9 +26,9 @@
      {
          $this->_extensionsCheck = $exts;
          $this->_extensionsMode  = $mode;
-+		if (!is_null($case_sensitive)) {
-+			$this->_extensionsCaseSensitive  = $case_sensitive;
-+		}
++        if (!is_null($case_sensitive)) {
++            $this->_extensionsCaseSensitive  = $case_sensitive;
++        }
      }
  
      /**
