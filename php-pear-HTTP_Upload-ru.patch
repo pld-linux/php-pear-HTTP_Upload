@@ -1,5 +1,5 @@
---- ./Upload.php	2006-02-22 13:22:39.000000000 +0200
-+++ /home/glen/Upload.php	2006-02-22 13:23:40.000000000 +0200
+--- ./Upload.php.org	2006-02-22 14:31:55.000000000 +0200
++++ ./Upload.php	2006-02-22 14:32:04.000000000 +0200
 @@ -106,7 +106,8 @@
                  'nl'    => "Het bestand is te groot, de maximale grootte is: $maxsize bytes.",
                  'fr'    => "Le fichier est trop gros. La taille maximum autoris&eacute;e est: $maxsize bytes.",
@@ -30,7 +30,7 @@
                  ),
              'NO_WRITE_PERMS' => array(
                  'es'    => 'El directorio destino no tiene permisos de escritura.',
-@@ -136,17 +139,19 @@
+@@ -136,7 +139,8 @@
                  'nl'    => 'Geen toestemming om te schrijven in de doeldirectory.',
                  'fr'    => 'Le r&eacute;pertoire de destination n\'a pas les droits en &eacute;criture.',
                  'it'    => 'Non si hanno i permessi di scrittura sulla directory di destinazione.',
@@ -40,10 +40,7 @@
                  ),
              'NO_USER_FILE' => array(
                  'es'    => 'No se ha escogido fichero para el upload.',
-                 'en'    => 'You haven\'t selected any file for uploading.',
--                'et'    => '&Uuml;leslaetav fail j&auml;i valimata.',
-+                'et'    => '&Uuml;leslaetav fail j&auml;i valimatta.',
-                 'de'    => 'Es wurde keine Datei f&uuml;r den Upload ausgew&auml;hlt.',
+@@ -146,7 +150,8 @@
                  'nl'    => 'Er is geen bestand opgegeven om te uploaden.',
                  'fr'    => 'Vous n\'avez pas s&eacute;lectionn&eacute; de fichier &agrave; envoyer.',
                  'it'    => 'Nessun file selezionato per l\'upload.',
