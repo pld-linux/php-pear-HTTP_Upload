@@ -7,14 +7,15 @@ Summary:	%{_pearname} - Easy and secure managment of files submitted via HTML Fo
 Summary(pl):	%{_pearname} - Proste i ³atwe zarz±dzanie plikami przesy³anymi przez formularze HTML
 Name:		php-pear-%{_pearname}
 Version:	0.9.1
-Release:	4
+Release:	5
 License:	PHP 2.02
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
 # Source0-md5:	fd1161202786fcba5272d2715bcda787
-Patch0:		%{name}-bug-4441.patch
-Patch1:		http://glen.alkohol.ee/pld/%{name}-et.patch
+Patch0:		%{name}-cvs.patch
+Patch1:		%{name}-et.patch
 Patch2:		%{name}-bug-4318.patch
+Patch3:		%{name}-ru.patch
 URL:		http://pear.php.net/package/HTTP_Upload/
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 Requires:	php-pear
@@ -56,9 +57,10 @@ Ta klasa ma w PEAR status: %{_status}.
 %prep
 %pear_package_setup
 cd ./%{php_pear_dir}/%{_class}
-%patch0 -p1
+%patch0 -p0
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
