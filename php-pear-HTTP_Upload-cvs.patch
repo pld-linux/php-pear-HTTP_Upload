@@ -298,7 +298,7 @@ http://cvs.php.net/viewcvs.cgi/pear/HTTP_Upload/Upload.php?r1=1.42&r2=1.53&view=
 -        return $this->getProp('name');
 +        if (!@move_uploaded_file($this->upload['tmp_name'], $name)) {
 +            $error =& $this->raiseError('E_FAIL_MOVE');
-+            return &error; 
++            return $error; 
 +        }
 +        @chmod($name, $this->_chmod);
 +        $prop =& $this->getProp('name');
