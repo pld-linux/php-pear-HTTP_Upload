@@ -17,6 +17,7 @@ Patch1:		%{name}-et.patch
 Patch2:		%{name}-bug-4318.patch
 Patch3:		%{name}-ru.patch
 URL:		http://pear.php.net/package/HTTP_Upload/
+BuildRequires:	php-pear-PEAR
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 Requires:	php-pear
 BuildArch:	noarch
