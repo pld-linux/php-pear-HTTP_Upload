@@ -4,7 +4,7 @@
 %define		_status		stable
 %define		_pearname	%{_class}_%{_subclass}
 Summary:	%{_pearname} - Easy and secure managment of files submitted via HTML Forms
-Summary(pl):	%{_pearname} - Proste i ³atwe zarz±dzanie plikami przesy³anymi przez formularze HTML
+Summary(pl.UTF-8):   %{_pearname} - Proste i Å‚atwe zarzÄ…dzanie plikami przesyÅ‚anymi przez formularze HTML
 Name:		php-pear-%{_pearname}
 Version:	0.9.1
 Release:	5
@@ -39,20 +39,20 @@ Features:
 
 In PEAR status of this package is: %{_status}.
 
-%description -l pl
-Ta klasa dostarcza system zaawansowanego uploadu plików z formularzy
+%description -l pl.UTF-8
+Ta klasa dostarcza system zaawansowanego uploadu plikÃ³w z formularzy
 html.
 
-W³a¶ciwo¶ci:
-- Potrafi pobraæ jeden i wiele plików.
+WÅ‚aÅ›ciwoÅ›ci:
+- Potrafi pobraÄ‡ jeden i wiele plikÃ³w.
 - Bezpieczne kopiowanie z katalogu tmp.
-- Prosty mechanizm wykrywania prawid³owego uploadu, braku uploadu oraz
-  b³êdu.
-- Daje rozszerzone informacje o ³adowanym pliku.
-- Zmiana nazwy plików na kilka sposobów: tak jak jest, bezpiecznie lub
+- Prosty mechanizm wykrywania prawidÅ‚owego uploadu, braku uploadu oraz
+  bÅ‚Ä™du.
+- Daje rozszerzone informacje o Å‚adowanym pliku.
+- Zmiana nazwy plikÃ³w na kilka sposobÃ³w: tak jak jest, bezpiecznie lub
   unikalnie.
-- Sprawdzanie dozwolonych rozszerzeñ plików.
-- Wsparcie dla wielojêzycznych komunikatów b³êdów.
+- Sprawdzanie dozwolonych rozszerzeÅ„ plikÃ³w.
+- Wsparcie dla wielojÄ™zycznych komunikatÃ³w bÅ‚Ä™dÃ³w.
 
 Ta klasa ma w PEAR status: %{_status}.
 
