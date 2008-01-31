@@ -7,7 +7,7 @@ Summary:	%{_pearname} - Easy and secure managment of files submitted via HTML Fo
 Summary(pl.UTF-8):	%{_pearname} - Proste i łatwe zarządzanie plikami przesyłanymi przez formularze HTML
 Name:		php-pear-%{_pearname}
 Version:	0.9.1
-Release:	5
+Release:	6
 License:	PHP 2.02
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
