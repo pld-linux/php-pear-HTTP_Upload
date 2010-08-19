@@ -1,26 +1,26 @@
 %include	/usr/lib/rpm/macros.php
 %define		_class		HTTP
 %define		_subclass	Upload
-%define		_status		stable
+%define		_status		beta
 %define		_pearname	%{_class}_%{_subclass}
+%define		subver		b1
+%define		rel			1
 Summary:	%{_pearname} - Easy and secure managment of files submitted via HTML Forms
 Summary(pl.UTF-8):	%{_pearname} - Proste i łatwe zarządzanie plikami przesyłanymi przez formularze HTML
 Name:		php-pear-%{_pearname}
-Version:	0.9.1
-Release:	6
+Version:	1.0.0
+Release:	0.%{subver}.%{rel}
 License:	PHP 2.02
 Group:		Development/Languages/PHP
-Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
-# Source0-md5:	fd1161202786fcba5272d2715bcda787
-Patch0:		%{name}-cvs.patch
-Patch1:		%{name}-et.patch
-Patch2:		%{name}-bug-4318.patch
-Patch3:		%{name}-ru.patch
+Source0:	http://pear.php.net/get/%{_pearname}-%{version}%{subver}.tgz
+# Source0-md5:	9671de649564af650d3c07ff0d43495f
+Patch0:		%{name}-bug-4318.patch
 URL:		http://pear.php.net/package/HTTP_Upload/
 BuildRequires:	php-pear-PEAR
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	rpmbuild(macros) >= 1.300
 Requires:	php-pear
+Requires:	php-pear-PEAR-core >= 1:1.4.0
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -58,11 +58,7 @@ Ta klasa ma w PEAR status: %{_status}.
 
 %prep
 %pear_package_setup
-cd ./%{php_pear_dir}/%{_class}
-%patch0 -p0
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%patch0 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
