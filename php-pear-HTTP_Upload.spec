@@ -4,7 +4,7 @@
 %define		_status		beta
 %define		_pearname	%{_class}_%{_subclass}
 %define		subver		b1
-%define		rel			1
+%define		rel			2
 Summary:	%{_pearname} - Easy and secure managment of files submitted via HTML Forms
 Summary(pl.UTF-8):	%{_pearname} - Proste i łatwe zarządzanie plikami przesyłanymi przez formularze HTML
 Name:		php-pear-%{_pearname}
@@ -16,11 +16,11 @@ Source0:	http://pear.php.net/get/%{_pearname}-%{version}%{subver}.tgz
 # Source0-md5:	9671de649564af650d3c07ff0d43495f
 Patch0:		%{name}-bug-4318.patch
 URL:		http://pear.php.net/package/HTTP_Upload/
-BuildRequires:	php-pear-PEAR
+BuildRequires:	php-pear-PEAR >= 1:1.4.0-0.b1
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	rpmbuild(macros) >= 1.300
 Requires:	php-pear
-Requires:	php-pear-PEAR-core >= 1:1.4.0
+Requires:	php-pear-PEAR-core
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
