@@ -1,10 +1,8 @@
-%include	/usr/lib/rpm/macros.php
-%define		_class		HTTP
-%define		_subclass	Upload
 %define		_status		beta
-%define		_pearname	%{_class}_%{_subclass}
-%define		subver		b1
-%define		rel			2
+%define		_pearname	HTTP_Upload
+%define		subver		b2
+%define		rel			1
+%include	/usr/lib/rpm/macros.php
 Summary:	%{_pearname} - Easy and secure managment of files submitted via HTML Forms
 Summary(pl.UTF-8):	%{_pearname} - Proste i łatwe zarządzanie plikami przesyłanymi przez formularze HTML
 Name:		php-pear-%{_pearname}
@@ -13,7 +11,7 @@ Release:	0.%{subver}.%{rel}
 License:	PHP 2.02
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}%{subver}.tgz
-# Source0-md5:	9671de649564af650d3c07ff0d43495f
+# Source0-md5:	b12f2dfbd5acbccbe6bc31fc38f43dde
 Patch0:		%{name}-bug-4318.patch
 URL:		http://pear.php.net/package/HTTP_Upload/
 BuildRequires:	php-pear-PEAR >= 1:1.4.0-0.b1
@@ -60,10 +58,19 @@ Ta klasa ma w PEAR status: %{_status}.
 %pear_package_setup
 %patch0 -p1
 
+# must use own own dir
+# interestingly it is loading from correct path already when running as
+# installed package.
+install -d .%{php_pear_dir}/data/%{_pearname}
+mv .%{php_pear_dir}/data/*.php .%{php_pear_dir}/data/%{_pearname}
+
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{php_pear_dir}
 %pear_package_install
+
+# tests should not be packaged
+rm -rf $RPM_BUILD_ROOT%{php_pear_dir}/tests/%{_pearname}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -73,4 +80,16 @@ rm -rf $RPM_BUILD_ROOT
 %doc install.log
 %doc docs/%{_pearname}/docs/*
 %{php_pear_dir}/.registry/*.reg
-%{php_pear_dir}/%{_class}/*.php
+%{php_pear_dir}/HTTP/Upload.php
+%dir %{php_pear_dir}/data/HTTP_Upload
+%{php_pear_dir}/data/HTTP_Upload/en.php
+%lang(da) %{php_pear_dir}/data/HTTP_Upload/da.php
+%lang(de) %{php_pear_dir}/data/HTTP_Upload/de.php
+%lang(es) %{php_pear_dir}/data/HTTP_Upload/es.php
+%lang(et) %{php_pear_dir}/data/HTTP_Upload/et.php
+%lang(fr) %{php_pear_dir}/data/HTTP_Upload/fr.php
+%lang(it) %{php_pear_dir}/data/HTTP_Upload/it.php
+%lang(nl) %{php_pear_dir}/data/HTTP_Upload/nl.php
+%lang(pt_BR) %{php_pear_dir}/data/HTTP_Upload/pt_BR.php
+%lang(ru) %{php_pear_dir}/data/HTTP_Upload/ru.php
+%lang(sv) %{php_pear_dir}/data/HTTP_Upload/sv.php
