@@ -1,24 +1,24 @@
+%define		_status		beta
+%define		_pearname	HTTP_Upload
+%define		subver		b2
+%define		rel			1
 %include	/usr/lib/rpm/macros.php
-%define		_class		HTTP
-%define		_subclass	Upload
-%define		_status		stable
-%define		_pearname	%{_class}_%{_subclass}
 Summary:	%{_pearname} - Easy and secure managment of files submitted via HTML Forms
-Summary(pl):	%{_pearname} - Proste i ³atwe zarz±dzanie plikami przesy³anymi przez formularze HTML
+Summary(pl.UTF-8):	%{_pearname} - Proste i Å‚atwe zarzÄ…dzanie plikami przesyÅ‚anymi przez formularze HTML
 Name:		php-pear-%{_pearname}
-Version:	0.9.1
-Release:	5
+Version:	1.0.0
+Release:	0.%{subver}.%{rel}
 License:	PHP 2.02
 Group:		Development/Languages/PHP
-Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
-# Source0-md5:	fd1161202786fcba5272d2715bcda787
-Patch0:		%{name}-cvs.patch
-Patch1:		%{name}-et.patch
-Patch2:		%{name}-bug-4318.patch
-Patch3:		%{name}-ru.patch
+Source0:	http://pear.php.net/get/%{_pearname}-%{version}%{subver}.tgz
+# Source0-md5:	b12f2dfbd5acbccbe6bc31fc38f43dde
+Patch0:		%{name}-bug-4318.patch
 URL:		http://pear.php.net/package/HTTP_Upload/
+BuildRequires:	php-pear-PEAR >= 1:1.4.0-0.b1
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
+BuildRequires:	rpmbuild(macros) >= 1.300
 Requires:	php-pear
+Requires:	php-pear-PEAR-core
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -37,30 +37,32 @@ Features:
 
 In PEAR status of this package is: %{_status}.
 
-%description -l pl
-Ta klasa dostarcza system zaawansowanego uploadu plików z formularzy
+%description -l pl.UTF-8
+Ta klasa dostarcza system zaawansowanego uploadu plikÃ³w z formularzy
 html.
 
-W³a¶ciwo¶ci:
-- Potrafi pobraæ jeden i wiele plików.
+WÅ‚aÅ›ciwoÅ›ci:
+- Potrafi pobraÄ‡ jeden i wiele plikÃ³w.
 - Bezpieczne kopiowanie z katalogu tmp.
-- Prosty mechanizm wykrywania prawid³owego uploadu, braku uploadu oraz
-  b³êdu.
-- Daje rozszerzone informacje o ³adowanym pliku.
-- Zmiana nazwy plików na kilka sposobów: tak jak jest, bezpiecznie lub
+- Prosty mechanizm wykrywania prawidÅ‚owego uploadu, braku uploadu oraz
+  bÅ‚Ä™du.
+- Daje rozszerzone informacje o Å‚adowanym pliku.
+- Zmiana nazwy plikÃ³w na kilka sposobÃ³w: tak jak jest, bezpiecznie lub
   unikalnie.
-- Sprawdzanie dozwolonych rozszerzeñ plików.
-- Wsparcie dla wielojêzycznych komunikatów b³êdów.
+- Sprawdzanie dozwolonych rozszerzeÅ„ plikÃ³w.
+- Wsparcie dla wielojÄ™zycznych komunikatÃ³w bÅ‚Ä™dÃ³w.
 
 Ta klasa ma w PEAR status: %{_status}.
 
 %prep
 %pear_package_setup
-cd ./%{php_pear_dir}/%{_class}
-%patch0 -p0
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%patch0 -p1
+
+# must use own own dir
+# interestingly it is loading from correct path already when running as
+# installed package.
+install -d .%{php_pear_dir}/data/%{_pearname}
+mv .%{php_pear_dir}/data/*.php .%{php_pear_dir}/data/%{_pearname}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -75,4 +77,16 @@ rm -rf $RPM_BUILD_ROOT
 %doc install.log
 %doc docs/%{_pearname}/docs/*
 %{php_pear_dir}/.registry/*.reg
-%{php_pear_dir}/%{_class}/*.php
+%{php_pear_dir}/HTTP/Upload.php
+%dir %{php_pear_dir}/data/HTTP_Upload
+%{php_pear_dir}/data/HTTP_Upload/en.php
+%lang(da) %{php_pear_dir}/data/HTTP_Upload/da.php
+%lang(de) %{php_pear_dir}/data/HTTP_Upload/de.php
+%lang(es) %{php_pear_dir}/data/HTTP_Upload/es.php
+%lang(et) %{php_pear_dir}/data/HTTP_Upload/et.php
+%lang(fr) %{php_pear_dir}/data/HTTP_Upload/fr.php
+%lang(it) %{php_pear_dir}/data/HTTP_Upload/it.php
+%lang(nl) %{php_pear_dir}/data/HTTP_Upload/nl.php
+%lang(pt_BR) %{php_pear_dir}/data/HTTP_Upload/pt_BR.php
+%lang(ru) %{php_pear_dir}/data/HTTP_Upload/ru.php
+%lang(sv) %{php_pear_dir}/data/HTTP_Upload/sv.php
