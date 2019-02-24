@@ -1,6 +1,6 @@
 %define		_status		beta
 %define		_pearname	HTTP_Upload
-%define		subver		b2
+%define		subver		b4
 %define		rel			1
 %include	/usr/lib/rpm/macros.php
 Summary:	%{_pearname} - Easy and secure managment of files submitted via HTML Forms
@@ -8,11 +8,10 @@ Summary(pl.UTF-8):	%{_pearname} - Proste i łatwe zarządzanie plikami przesyła
 Name:		php-pear-%{_pearname}
 Version:	1.0.0
 Release:	0.%{subver}.%{rel}
-License:	PHP 2.02
+License:	LGPL
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}%{subver}.tgz
-# Source0-md5:	b12f2dfbd5acbccbe6bc31fc38f43dde
-Patch0:		%{name}-bug-4318.patch
+# Source0-md5:	be4ca339fae538c8fbadd7b358b1356f
 URL:		http://pear.php.net/package/HTTP_Upload/
 BuildRequires:	php-pear-PEAR >= 1:1.4.0-0.b1
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
@@ -56,7 +55,6 @@ Ta klasa ma w PEAR status: %{_status}.
 
 %prep
 %pear_package_setup
-%patch0 -p1
 
 # must use own own dir
 # interestingly it is loading from correct path already when running as
@@ -78,6 +76,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc docs/%{_pearname}/docs/*
 %{php_pear_dir}/.registry/*.reg
 %{php_pear_dir}/HTTP/Upload.php
+%dir %{php_pear_dir}/HTTP/Upload
+%{php_pear_dir}/HTTP/Upload/Error.php
+%{php_pear_dir}/HTTP/Upload/File.php
 %dir %{php_pear_dir}/data/HTTP_Upload
 %{php_pear_dir}/data/HTTP_Upload/en.php
 %lang(da) %{php_pear_dir}/data/HTTP_Upload/da.php
