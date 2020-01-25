@@ -2,7 +2,6 @@
 %define		_pearname	HTTP_Upload
 %define		subver		b4
 %define		rel			1
-%include	/usr/lib/rpm/macros.php
 Summary:	%{_pearname} - Easy and secure managment of files submitted via HTML Forms
 Summary(pl.UTF-8):	%{_pearname} - Proste i łatwe zarządzanie plikami przesyłanymi przez formularze HTML
 Name:		php-pear-%{_pearname}
